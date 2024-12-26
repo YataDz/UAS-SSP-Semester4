@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block isinya%}
+{%load static%}
+
+<div class="p-3 mb-2 bg-black text-white mx-auto">
+    <h2>FORM PEMBELIAN DIAMOND LOCK</h2>
+    <section id="form">
+        {% for message in messages %}
+            {% if message %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class='btn btn-primary'>Submit</button>
+            <a href="/Vbrg" class="btn btn-danger">kembali ke Data Transaksi</a>
+            <a href="/" class="btn btn-danger">kembali ke Beranda</a>
+        </form>
+        </form>
+    <section>
+      
+</div>
+{% endblock %}
+

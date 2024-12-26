@@ -1,0 +1,133 @@
+{% extends 'base.html'%}
+{% block isinya%}
+{%load static%}
+
+
+<style>
+    .modal-content{
+        background-color: #4b5563 !important;
+    }
+</style>
+<div class="p-3 mb-2 bg-black text-white mx-auto">
+
+
+        <table class="table table-hover table-dark">
+            {% for message in messages %}
+                {% if message %}
+                    <div class="alert alert-success">{{ message }} </div>
+                {% endif %}
+            {% endfor %}
+            <h2>TABLE PEMBELIAN DIAMOND LOCK</h2>
+            <p> <a href="/belibrg" class='btn btn-info'>Tambah Data</a></p>
+            <tr>
+                <th>Kode World</th>
+                <th>Nama</th>
+                <th>Growid</th>
+                <th>Nomor Telepon</th>
+                <th>Jumlah</th>
+                <th>jenis Transfer</th>
+                <th>Bukti Transfer</th>
+                <th>Edit<th>
+            </tr>
+        {% for Barang in barang_beli %}
+        <tr>
+            <td>{{ Barang.kodeworld }}</td>
+            <td>{{ Barang.nama }}</td>
+            <td>{{ Barang.growid }}</td>
+            <td>{{ Barang.nomor }}</td>
+            <td>{{ Barang.jumlah }}</td>
+            <td>{{ Barang.pembayaran}}</td>
+            <td>
+                {% if Barang.buktitransfer %}
+                    <img src="{{ Barang.buktitransfer.url }}" class="img-fluid" width="100" height="100" alt="Gambar Barang">
+                {% else %}
+                    No Image Available
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'ubah_beli' Barang.id %}" class='btn btn-info'>Edit Data</a> 
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#hapus-{{ Barang.id }}"> Hapus </button>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+
+        <!-- Modal -->
+
+<div class="modal fade" id="hapus-{{ Barang.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Yakin akan dihapus?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Nama world : {{ Barang.kodeworld }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <a href="{% url 'hapus_brg' Barang.id %}" class="btn btn-danger">Yakin</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+    
+        </table>
+        <h2>TABLE PENJUALAN DIAMOND LOCK</h2>
+        <p> <a href="/jualbrg" class='btn btn-info'>Tambah Data</a></p>
+        <tr>
+        <table class="table table-hover table-dark">
+            <tr>
+                <th>Jumlah</th>
+                <th>Nomor Telepon</th>
+                <th>Nama</th>
+                <th>Nomor Rekening</th>
+                <th>Jenis Transaksi</th>
+                <th>Bukti Pengiriman</th>
+                <th>edit</th>
+            </tr>
+        {% for Barang in barang_jual %}
+        <tr>
+            <td>{{ Barang.jumlah }}</td>
+            <td>{{ Barang.nomor}}</td>
+            <td>{{ Barang.nama }}</td>
+            <td>{{ Barang.nomor_rekening}}</td>
+            <td>{{ Barang.pembayaran}}</td>
+            <td>
+                {% if Barang.buktipengiriman %}
+                    <img src="{{ Barang.buktipengiriman.url }}" class="img-fluid" width="100" height="100" alt="Gambar Barang">
+                {% else %}
+                    No Image Available
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'ubah_jual' Barang.id %}" class='btn btn-info'>Edit Data</a> 
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#hapus-{{ Barang.id }}"> Hapus </button>
+            </td>
+
+        </tr>
+        <div class="modal fade" id="hapus-{{ Barang.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Yakin akan dihapus?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nama Telepon : {{ Barang.nomor }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <a href="{% url 'hapus_brg_jual' Barang.id %}" class="btn btn-danger">Yakin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+        </table>
+</div>
+{% endblock %}

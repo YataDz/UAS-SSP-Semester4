@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% block isinya%}
+{% load static %}
+
+    <main>
+        <div class="p-3 mb-2 bg-black text-white">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/awal.png' %}" class="d-block mx-auto" alt="Slide 1" style="max-width: 700px; max-height: 900px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{%static 'img/open.png'%}" class="d-block mx-auto" alt="Slide 2" style="max-width: 700px; max-height: 900px;">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <br>
+            <div class="card text-bg-dark d-flex justify-content-center align-items-center">
+                <img src="{%static 'img/nightgt_cropped.png'%}" class="card-img" alt="Background">
+                <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{%static 'img/dl.png'%}" alt="Diamond Lock" style="width: 85px; height: 85px; margin-right: 10px;">
+                            <div>
+                                <h4 class="card-title text-center">Diamond Lock</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <p class="d-inline-flex gap-5">
+                            <a href="/jualbrg" class="btn btn-primary" role="button">Jual</a>
+                            <a href="/belibrg" class="btn btn-primary" role="button">Beli</a>
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                        <div class="d-inline-flex gap-5">
+                            <p style="margin-right: 3px;">RP.4.500</p>
+                            <p>RP.5.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% endblock %}
